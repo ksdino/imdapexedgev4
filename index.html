@@ -634,29 +634,22 @@
 
        /* Mobile Menu */
        .mobile-menu {
-            transition: all 0.3s ease;
-            background: rgb(17, 24, 39);
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            border-top: 1px solid rgb(31, 41, 55);
-        }
+    transition: all 0.3s ease;
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    margin-top: 1rem;
+}
 
-        .mobile-menu a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: rgb(148, 163, 184);
-            font-weight: 400;
-            border-bottom: 1px solid rgb(31, 41, 55);
-            transition: all 0.3s ease;
-        }
+.menu-button {
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
 
-        .mobile-menu a:hover {
-            background: rgb(31, 41, 55);
-            color: white;
-        }
+.menu-button:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
 
         /* language switcher */
 
@@ -777,12 +770,13 @@
     <header class="fixed w-full top-0 z-50 bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg border-b border-gray-800">
         <nav class="container mx-auto px-4 sm:px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo and desktop menu -->
-                <div class="flex items-center space-x-8 sm:space-x-12">
+                <!-- Logo and Navigation Links -->
+                <div class="flex items-center space-x-8">
                     <a href="index.html" class="text-xl sm:text-2xl font-bold logo-text tracking-tight">
                         Immediate Apex Edge
                     </a>
                     
+                    <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
                         <a href="index.html" class="nav-link text-gray-300 hover:text-white font-medium">Home</a>
                         <a href="about.html" class="nav-link text-gray-300 hover:text-white font-medium">About</a>
@@ -791,25 +785,28 @@
                     </div>
                 </div>
     
-                <!-- Language switcher -->
-                <div class="hidden md:flex items-center ml-4">
-                    <button class="lang-switch" onclick="toggleLanguage()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                <!-- Right Side Items -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Switcher -->
+                    <div class="hidden md:block">
+                        <button class="lang-switch" onclick="toggleLanguage()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                            </svg>
+                            <span id="langBtnText">EN</span>
+                        </button>
+                    </div>
+    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden menu-button" id="menuBtn">
+                        <svg class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
-                        <span id="langBtnText">EN</span>
                     </button>
                 </div>
-                
-                <!-- Mobile menu button -->
-                <button class="md:hidden menu-button p-2 hover:bg-gray-800 rounded-lg transition-all duration-300" id="menuBtn">
-                    <svg class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
             </div>
     
-            <!-- Mobile menu container - Moved outside the button -->
+            <!-- Mobile Menu -->
             <div class="mobile-menu hidden md:hidden animate__animated animate__fadeIn" id="mobileMenu">
                 <div class="flex flex-col space-y-2 p-4">
                     <a href="index.html" class="text-white px-4 py-2 rounded-lg bg-gray-800 transition-all duration-200">Home</a>
@@ -817,7 +814,7 @@
                     <a href="market.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Market Price</a>
                     <a href="contact.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Contact</a>
                 </div>
-                
+                <!-- Mobile Language Switcher -->
                 <div class="px-4 py-2">
                     <button class="lang-switch w-full justify-center" onclick="toggleLanguage()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -829,7 +826,6 @@
             </div>
         </nav>
     </header>
-
 
 
 
